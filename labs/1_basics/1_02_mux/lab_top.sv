@@ -124,7 +124,7 @@ module lab_top
     // without using "?" operation, "if", "case" or a bit selection.
     // Use only operations "&", "|", "~" and parenthesis, "(" and ")".
 
-    wire mux4 = 1'b0;
+    wire mux4 = !sel & a | sel & b;
 
     //------------------------------------------------------------------------
 
