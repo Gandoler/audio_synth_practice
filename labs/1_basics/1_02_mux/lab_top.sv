@@ -292,6 +292,25 @@ module lab_top
     // Exercise 3: Change the table to get the correct result by doing
     // wire mux11_2 = table11_2 [sel][b][a];
 
+ logic table11_2 [0:1][0:1][0:1] =
+    '{
+        // sel = 0
+        '{
+            
+            '{ 1'b0, 1'b1 }, // b = 0, a = 0/1
+            '{ 1'b1, 1'b1 }  // b = 1, a = 0/1
+        },
+
+        // sel = 1
+        '{
+         
+            '{ 1'b0, 1'b0 }, // b = 0, a = 0/1
+            '{ 1'b0, 1'b1 }  // b = 1, a = 0/1
+        }
+    };
+
+    wire mux11_2 = table11_2 [sel][b][a];
+    
     `else
 
     wire mux11 = mux0;
