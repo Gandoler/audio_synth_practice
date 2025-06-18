@@ -116,6 +116,6 @@ module lab_top
     //
     // ~ (a & b) == ~ a | ~ b
     // ~ (a | b) == ~ a & ~ b
-    assign led[0] =  ~ (a & b) == ~ a | ~ b;
-    assign led[1] =  ~ (a | b) == ~ a & ~ b;
+    assign led[4] =  ~ (a & b) == ~ a | ~ b;
+    assign led[5] =  ~ (a | b) == ~ a & ~ b;
 endmodule
