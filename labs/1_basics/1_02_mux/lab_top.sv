@@ -142,11 +142,24 @@ module lab_top
         1'b1  // sel = 1, a = 1, b = 1
     };
 
+
+   
     wire mux5 = table5 [{ sel, a, b }];
 
     // Exercise 2: Change the table to get the correct result by doing
     // wire mux5_2 = table5_2 [{ a, b, sel }];
-
+ wire [0:7] table5_2 =
+    {
+        1'b0, //  a = 0, b = 0, sel = 0
+        1'b0, //  a = 0, b = 0, sel = 1
+        1'b1, //  a = 0, b = 1, sel = 0
+        1'b0, //  a = 0, b = 1, sel = 1
+        1'b0, //  a = 1, b = 0, sel = 0
+        1'b1, //  a = 1, b = 0, sel = 1
+        1'b1, //  a = 1, b = 1, sel = 0
+        1'b1, //  a = 1, b = 1, sel = 1
+    };
+    wire mux5_2 = table5 [{ a, b, sel }];
     //------------------------------------------------------------------------
 
     wire [7:0] table6 =
