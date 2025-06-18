@@ -96,7 +96,7 @@ module lab_top
     // Exercise 1: Display the first letters
     // of your first name and last name instead.
 
-    // assign abcdefgh = ...
+    assign abcdefgh = 
     // assign digit    = ...
 
     // Exercise 2: Display letters of a 4-character word
