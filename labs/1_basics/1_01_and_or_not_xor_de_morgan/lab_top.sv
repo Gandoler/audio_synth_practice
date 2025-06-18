@@ -103,18 +103,19 @@ module lab_top
     // If led [2] is not available on your board,
     // comment out the code above and reuse led [0].
 
-    // assign led [2] =
+    assign led [2] = a & b;
 
     // Exercise 2: Change the code below.
     // Assign to led [3] the result of XOR operation
     // without using "^" operation.
     // Use only operations "&", "|", "~" and parenthesis, "(" and ")".
 
-    // assign led [3] =
+    assign led [3] = (~x1 & x2) || ( x1 & ~x2);
 
     // Exercise 3: Create an illustration to De Morgan's laws:
     //
     // ~ (a & b) == ~ a | ~ b
     // ~ (a | b) == ~ a & ~ b
-
+    assign led[0] =  ~ (a & b) == ~ a | ~ b;
+    assign led[1] =  ~ (a | b) == ~ a & ~ b;
 endmodule
