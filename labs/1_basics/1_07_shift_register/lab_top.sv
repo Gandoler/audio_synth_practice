@@ -60,8 +60,8 @@ module lab_top
     //------------------------------------------------------------------------
 
     // assign led        = '0;
-       assign abcdefgh   = '0;
-       assign digit      = '0;
+//       assign abcdefgh   = '0;
+//       assign digit      = '0;
        assign red        = '0;
        assign green      = '0;
        assign blue       = '0;
@@ -116,17 +116,17 @@ module lab_top
     // Exercise 2: Make the light moving in a loop.
     // Use another key to reset the moving lights back to no lights.
 
-	 wire button_on = | key;
-
-    logic [w_led - 1:0] shift_reg;
-
-    always_ff @ (posedge clk or posedge rst)
-        if (rst)
-            shift_reg <= 'b1;
-        else if (enable & button_on)
-            shift_reg <= shift_reg <<1;
-
-    assign led = shift_reg; /// press reset
+//	 wire button_on = | key;
+//
+//    logic [w_led - 1:0] shift_reg;
+//
+//    always_ff @ (posedge clk or posedge rst)
+//        if (rst)
+//            shift_reg <= 'b1;
+//        else if (enable & button_on)
+//            shift_reg <= shift_reg <<1;
+//
+//    assign led = shift_reg; /// press reset
 	 
 	 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -135,4 +135,18 @@ module lab_top
     // Exercise 3: Display the state of the shift register
     // on a seven-segment display, moving the light in a circle.
 
+	   wire button_on = | key;
+
+    logic [w_led - 1:0] shift_reg;
+
+    always_ff @ (posedge clk or posedge rst)
+        if (rst)
+            shift_reg <= '1;
+        else if (enable)
+            shift_reg <= { shift_reg [w_led - 2:0],button_on };
+
+    assign led = shift_reg;
+	 assign abcdefgh = shift_reg;
+	 assign digit = 2'b01;
+	 
 endmodule
