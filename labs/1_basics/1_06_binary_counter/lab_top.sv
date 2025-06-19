@@ -151,7 +151,7 @@ module lab_top
 //    assign led = w_led' (cnt);
 //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  // 
 //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  // 
-//                                               num dop po najatiu knopok v levoi i pravoi chasti
+//                                               num 3
   //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  // 
 //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  // 
 
@@ -213,70 +213,6 @@ module lab_top
 				cntright <= (in_or_decrement? cntright +(1& left_or_right): cntright +(-1& left_or_right));
 		  end
     assign led = w_led'({cntright, cntleft});
-//  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  // 
-//  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  // 
-//                                               num dop po najatiu knopok v levoi i pravoi chasti
-  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  // 
-//  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  // 
-
-//    logic in_or_decrement;
-//	 logic left_or_right;
-//	 logic any_key;
-//    logic any_key_r;
-//
-//	 always_comb begin 
-//	   
-//		in_or_decrement = 0;
-//		left_or_right = 0;
-//		case(key)
-//		
-//		4'b0001: begin
-//	     in_or_decrement = 0;
-//		  any_key = 1;
-//		  left_or_right=0;
-//		  end
-//		4'b0010: begin
-//	     in_or_decrement = 1;
-//		  any_key = 1;
-//		  left_or_right=0;
-//		  end
-//		4'b0100: begin
-//	     in_or_decrement = 0;
-//		  any_key = 1;
-//		  left_or_right=1;
-//		  end
-//		4'b1000: begin
-//	     in_or_decrement = 1;
-//		  any_key = 1;
-//		  left_or_right=1;
-//		  end
-//		default:  any_key = 0;
-//	 endcase
-//   end
-//	
-//	
-//    always_ff @ (posedge clk or posedge rst)
-//        if (rst)
-//            any_key_r <= '0;
-//        else
-//				
-//            any_key_r <= |key;
-//
-//    wire any_key_pressed = any_key & ~any_key_r;
-//
-//    logic [w_led/2-1 :0] cntleft;
-//	 logic [w_led/2-1 :0] cntright;
-//
-//    always_ff @ (posedge clk or posedge rst)
-//        if (rst) begin
-//            cntleft <= '0;
-//				cntright <= '0;
-//				end
-//        else if (any_key_pressed) begin
-//            cntleft <= (in_or_decrement? cntleft + (1& !left_or_right): cntleft +(-1 & !left_or_right));
-//				cntright <= (in_or_decrement? cntright +(1& left_or_right): cntright +(-1& left_or_right));
-//		  end
-//    assign led = w_led'({cntright, cntleft});
 //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  // 
 //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  // 
   
