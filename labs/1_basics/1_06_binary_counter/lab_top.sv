@@ -73,18 +73,22 @@ module lab_top
     // Exercise 1: Free running counter.
     // How do you change the speed of LED blinking?
     // Try different bit slices to display.
+//  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  // 
+//  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  // 
 
-    localparam w_cnt = $clog2 (clk_mhz * 1000 * 1000*10); // 10 seconds over
-
-    logic [w_cnt - 1:0] cnt;
-
-    always_ff @ (posedge clk or posedge rst)
-        if (rst)
-            cnt <= '0;
-        else
-            cnt <= cnt + 1'd1;
-
-    assign led = cnt [$left (cnt)-1 -: w_led]; // 5 sec with (cnt)-1
+//    localparam w_cnt = $clog2 (clk_mhz * 1000 * 1000*10); // 10 seconds over
+//
+//    logic [w_cnt - 1:0] cnt;
+//
+//    always_ff @ (posedge clk or posedge rst)
+//        if (rst)
+//            cnt <= '0;
+//        else
+//            cnt <= cnt + 1'd1;
+//
+//    assign led = cnt [$left (cnt)-1 -: w_led]; // 5 sec with (cnt)-1
+//  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  // 
+//  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  // 
 
     // Exercise 2: Key-controlled counter.
     // Comment out the code above.
@@ -98,19 +102,39 @@ module lab_top
     // 2. Two counters controlled by different keys
     // displayed in different groups of LEDs.
 
-    /*
+   
+//  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  // 
+//  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  // 
 
-    wire any_key = | key;
-
+    logic crement;
+	 logic any_key;
     logic any_key_r;
-
+	 always_comb begin 
+	   
+		crement = 0;
+		case(key)
+		
+		4'b0001: begin
+	     crement = 0;
+		  any_key = 1;
+		  end
+		4'b0010: begin
+	     crement = 1;
+		  any_key = 1;
+		  end
+		default:  any_key = 0;
+	 endcase
+   end
+	
+	
     always_ff @ (posedge clk or posedge rst)
         if (rst)
             any_key_r <= '0;
         else
-            any_key_r <= any_key;
+				
+            any_key_r <= |key;
 
-    wire any_key_pressed = ~ any_key & any_key_r;
+    wire any_key_pressed = any_key & ~any_key_r;
 
     logic [w_led - 1:0] cnt;
 
@@ -118,10 +142,12 @@ module lab_top
         if (rst)
             cnt <= '0;
         else if (any_key_pressed)
-            cnt <= cnt + 1'd1;
+            cnt <= crement? cnt + 1: cnt -1;
 
     assign led = w_led' (cnt);
+//  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  // 
+//  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  // 
 
-    */
+    
 
 endmodule
