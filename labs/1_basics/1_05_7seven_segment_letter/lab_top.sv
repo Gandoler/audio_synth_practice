@@ -90,19 +90,28 @@ module lab_top
     }
     seven_seg_encoding_e;
 
-    assign abcdefgh = key [0] ? P : F;
-    assign digit    = w_digit' (key [1] ? 2'b10 : 2'b01);
+    // assign abcdefgh = key [0] ? P : F;
+    // assign digit    = w_digit' (key [1] ? 2'b10 : 2'b01);
 
     // Exercise 1: Display the first letters
     // of your first name and last name instead.
 
-    assign abcdefgh = 
-    // assign digit    = ...
+     // assign abcdefgh =key [0] ? 8'b1000_1110 : 8'b1011_1100; 
+     // assign digit    = w_digit' (key [1] ? 2'b10 : 2'b01);
 
     // Exercise 2: Display letters of a 4-character word
     // using this code to display letter of FPGA as an example
+// // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // 
+// // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // 
 
-    /*
+	// Exercise 1: Display the first letters
+    // of your first name and last name instead.
+
+     // assign abcdefgh =key [0] ? 8'b1000_1110 : 8'b1011_1100; 
+     // assign digit    = w_digit' (key [1] ? 2'b10 : 2'b01);
+// // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // 
+// // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // 
+	
     seven_seg_encoding_e letter;
 
     always_comb
@@ -116,6 +125,8 @@ module lab_top
 
     assign abcdefgh = letter;
     assign digit    = w_digit' (key);
-    */
+// // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // 
+// // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // 
+   
 
 endmodule
