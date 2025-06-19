@@ -74,7 +74,7 @@ module lab_top
     // How do you change the speed of LED blinking?
     // Try different bit slices to display.
 
-    localparam w_cnt = $clog2 (clk_mhz * 1000 * 1000);
+    localparam w_cnt = $clog2 (clk_mhz * 1000 * 1000*10); // 10 seconds over
 
     logic [w_cnt - 1:0] cnt;
 
@@ -84,7 +84,7 @@ module lab_top
         else
             cnt <= cnt + 1'd1;
 
-    assign led = cnt [$left (cnt) -: w_led];
+    assign led = cnt [$left (cnt)-1 -: w_led]; // 5 sec with (cnt)-1
 
     // Exercise 2: Key-controlled counter.
     // Comment out the code above.
